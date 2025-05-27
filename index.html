@@ -3,15 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>analise de tautologia</title>
+    <title>Analise de Tautologia</title>
 </head>
-<body>
+<body onload="verificarTautologia()">
     <h1>Análise de Tautologia</h1>
     <p>Este é um exemplo de análise de tautologia.</p>
 
     <label for="greve">Há greve?</label>
-    <input type="checkbox" id="greve" name="greve">
-    <br><br>
+    <input type="checkbox" id="greve" name="greve" onchange="{
+        document.getElementById('sensor').innerHTML = this.checked ? 'R' : '¬R';
+        console.log('Greve alterada para: ' + (this.checked ? 'R' : '¬R'));
+        verificarTautologia()
+    }">
+    <br>
     <p>
         P: 'metrô funcionar dentro da normalidade', <br>
         Q: 'passageiro chegar ao destino no horário', <br>
@@ -35,9 +39,11 @@
         V → S <br>
         Y ↔ S <br>
         ¬W ⋃ Y → X <br>
-        <span>R</span>
+        <span id="sensor" name="sensor">R</span>
     </p>
-    <button id="btnConfirmar" name="btnConfirmar" onclick="verificarTautologia()">Confirmar</button>
+    <span id="resultado"></span>
+    <br>
+    <ul id="msgErro"></ul>
     <script src="/index.js"></script>
 </body>
 </html>
