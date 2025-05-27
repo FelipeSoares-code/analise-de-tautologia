@@ -1,3 +1,5 @@
+
+
 function implica(a, b) {
     return !a || b
 }
@@ -25,30 +27,45 @@ const txtVariaveis = {
 
 //variaveis para facilitar a leitura do codigo
 const numVariaveis = txtVariaveis.length;
-const totalLinhas = Math.pow(2, variaveis.length);
+const totalLinhas = Math.pow(2, Object.values(txtVariaveis).length);
 
-for (let i = 0; i < totalLinhas; i++) {
-    // cria um número em binário com o tamanho do número de variáveis
-    // e converte para um array de números com zeros a esqueda para completar
-    // Exemplo: 5 -> [0, 0, 0, 0, 0, 0, 0, 0, 0, 1]
-    // isso é usado para criar todas as combinações possíveis de verdadeiro ou falso
-    // com o número de variáveis que temos
-    const bin = i.toString(2).padStart(numVariaveis, '0').split('').map(Number);
-    const [ p, q, r, s, t, u, v, w, x, y ] = bin;
+function verificarTautologia() {
+    console.clear();
+    let haGreve = document.getElementById('greve').checked;
+    console.log(haGreve ? 'Haverá greve de funcionários' : 'Não haverá greve de funcionários');
+    console.log(totalLinhas)
+    let tautologia = true;
 
-    argumentos = [
-        implica(p, q),
-        implica(r, !q && s),
-        implica(t || r, u),
-        implica(r && xor(u, !u), !q),
-        implica((q && v), (w && x)),
-        implica(!q, !w),
-        implica(v, s),
-        somenteSe(y, s),
-        implica(!w || y, x),
-        r
-    ];
+    for (let i = 0; i < totalLinhas; i++) {
+        // cria um número em binário com o tamanho do número de variáveis
+        // e converte para um array de números com zeros a esqueda para completar
+        // Exemplo: 5 -> [0, 0, 0, 0, 0, 0, 0, 0, 0, 1]
+        // isso é usado para criar todas as combinações possíveis de verdadeiro ou falso
+        // com o número de variáveis que temos
+        const bin = i.toString(2).padStart(numVariaveis, '0').split('').map(Number);
+        const [ p, q, r, s, t, u, v, w, x, y ] = bin;
+
+        const argumento = (
+            implica(
+                implica(p, q) &&
+                implica(r, !q && s) &&
+                implica(t || r, u) &&
+                implica(r && xor(u, !u), !q) &&
+                implica((q && !v), (w && !x)) &&
+                implica(!q, !w) &&
+                implica(v, s) &&
+                somenteSe(y, s) &&
+                implica(!w || y, x),
+                haGreve ? r : !r
+            )
+        )
+
+        const resultado = argumento
+        if (!resultado) tautologia = false;
+        console.log(`linha ${i}: ${argumento ? 'V' : 'F'}`)
+    }
+
+    console.log(`A proposição ${tautologia ? 'é tautologia' : 'não é tautologia'}`)
 }
-
 
 

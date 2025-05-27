@@ -6,6 +6,38 @@
     <title>analise de tautologia</title>
 </head>
 <body>
-    
+    <h1>Análise de Tautologia</h1>
+    <p>Este é um exemplo de análise de tautologia.</p>
+
+    <label for="greve">Há greve?</label>
+    <input type="checkbox" id="greve" name="greve">
+    <br><br>
+    <p>
+        P: 'metrô funcionar dentro da normalidade', <br>
+        Q: 'passageiro chegar ao destino no horário', <br>
+        R: 'haver uma greve de funcionários', <br>
+        S: 'metrô ficar lotado', <br>
+        T: 'metrô em manutenção', <br>
+        U: 'ativar transporte alternativo', <br>
+        V: 'ter excesso de passageiro na estação', <br>
+        W: 'passageiro ter alta satisfação', <br>
+        X: 'ter reclamações públicas', <br>
+        Y: 'passageiro sentir desconforto'
+    </p>
+    <hr>
+    <p>
+        P → Q <br>
+        R → (¬Q ⋂ S) <br>
+        T ⋃ R → U <br>
+        R ⋂ (U ⊕ ¬U) → ¬Q <br>
+        (Q ⋂ ¬V) → (W ⋂ ¬X) <br>
+        ¬Q → ¬W <br>
+        V → S <br>
+        Y ↔ S <br>
+        ¬W ⋃ Y → X <br>
+        <span>R</span>
+    </p>
+    <button id="btnConfirmar" name="btnConfirmar" onclick="verificarTautologia()">Confirmar</button>
+    <script src="/index.js"></script>
 </body>
 </html>
