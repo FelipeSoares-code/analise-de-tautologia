@@ -76,9 +76,6 @@ function verificarTautologia() {
         msgErro.forEach((msg) => {
             document.getElementById('msgErro').innerHTML += `<li>${msg}</li>`
         })
-    } else {
-        msgErro = []
-        document.getElementById('msgErro').innerHTML = ''
     }
 
     console.log(resultado)
