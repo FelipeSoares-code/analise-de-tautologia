@@ -26,13 +26,16 @@ const txtVariaveis = {
 };
 
 //variaveis para facilitar a leitura do codigo
-const numVariaveis = txtVariaveis.length;
-const totalLinhas = Math.pow(2, Object.values(txtVariaveis).length);
-let msgErro = []
+const numVariaveis = Object.values(txtVariaveis).length;
+const totalLinhas = Math.pow(2, numVariaveis);
+
 
 function verificarTautologia() {
-    console.clear();
+    console.clear()
+    let msgErro = []
     let haGreve = document.getElementById('greve').checked;
+    
+    document.getElementById('msgErro').innerHTML = '';
     console.log(haGreve ? 'Haverá greve de funcionários' : 'Não haverá greve de funcionários');
     console.log(totalLinhas)
     let tautologia = true;
@@ -63,9 +66,9 @@ function verificarTautologia() {
         // se um argumento for falso, a proposição não é uma tautologia
         if (!argumento){
             tautologia = false;
-            msgErro.push(`A linha número ${i} é falsa [${bin}]`);
+            msgErro.push(`A linha número ${i + 1} é falsa [${bin}]`);
         } 
-        console.log(`linha ${i}: ${argumento ? 'V' : 'F'}`)
+        console.log(`linha ${i + 1}: ${argumento ? 'V' : 'F'}`)
     }
 
     const resultado = `A proposição ${tautologia ? 'é tautologia' : `não é tautologia`}`
