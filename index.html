@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/index.css">
+    <link rel="stylesheet" href="./index.css">
     <title>Analise de Tautologia</title>
 </head>
 <body onload="verificarTautologia()" class="geral">
@@ -12,8 +12,8 @@
 
     <label for="greve">Há greve?</label>
     <input type="checkbox" id="greve" name="greve" onchange="{
-        document.getElementById('sensor').innerHTML = this.checked ? 'R' : '¬R';
-        console.log('Greve alterada para: ' + (this.checked ? 'R' : '¬R'));
+        document.getElementById('sensor').innerHTML = this.checked ? 'r' : '¬r';
+        console.log('Greve alterada para: ' + (this.checked ? 'r' : '¬r'));
         verificarTautologia()
     }">
     <br>
@@ -45,6 +45,6 @@
     <span id="resultado"></span>
     <br>
     <ul id="msgErro"></ul>
-    <script src="/index.js"></script>
+    <script src="./index.js"></script>
 </body>
 </html>
